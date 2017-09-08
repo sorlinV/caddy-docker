@@ -6,23 +6,21 @@ services:
     caddy:
         image: abiosoft/caddy:php
         ports:
-            -   2015:2015
+            -   80:2015
             -   9000:9000
             -   5001:5001
+            -   443:443
         volumes:
+            - ./caddy/Caddyfile:/etc/Caddyfile
+            - ./caddy/.caddy:/root/.caddy
             - /home/isidoris-simplon/rendu/:/srv
-            - ./caddy/Caddyfile:/root/.caddy/Caddyfile
-    
     php:
-        image: php
+        image: php:fpm
         volumes:
-        - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
-        - ./php/php.ini:/usr/local/etc/php/php.ini
         - /home/isidoris-simplon/rendu:/var/www/html
 
-
-    mysql: 
-        image: mysql
+    mariadb: 
+        image: mariadb
         environment:
             MYSQL_ROOT_PASSWORD: wqaxszcde123
             MYSQL_DATABASE: db

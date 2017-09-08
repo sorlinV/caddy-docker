@@ -1,12 +1,2 @@
-sorlin.fr   # Your site's address
-
-ext .html   # Clean URLs
-errors error.log {       # Error log
-    404 error-404.html   # Custom error page
-}
-
-# PHP backend
-fastcgi /blog localhost:9000 php
-
-# API load balancer
-proxy /api localhost:5001 localhost:5002
+0.0.0.0
+browse
