@@ -4,7 +4,7 @@ services:
 #restart
 #docker php
     caddy:
-        image: abiosoft/caddy:php
+        image: zzrot/alpine-caddy
         ports:
             -   80:2015
             -   9000:9000
