@@ -4,7 +4,7 @@ services:
 #restart
 #docker php
     caddy:
-        image: zzrot/alpine-caddy
+        image: elswork/arm-caddy
         ports:
             -   80:2015
             -   9000:9000
@@ -20,14 +20,14 @@ services:
         - /home/isidoris-simplon/rendu:/var/www/html
 
     mariadb: 
-        image: mariadb
+        image: hareemca123/arm-mysql
         environment:
             MYSQL_ROOT_PASSWORD: wqaxszcde123
             MYSQL_DATABASE: db
             MYSQL_USER: mariadb
             MYSQL_PASSWORD: wqaxszcde123
         ports: 
-            - localhost:3306:3306
+            - 3306:3306
 
     # mail:
     #     image: tvial/docker-mailserver:latest
