@@ -1,10 +1,7 @@
 version: '2'
 services:
-#docker run -d -v /path/to/php/src:/srv -p 2015:2015 abiosoft/caddy:php
-#restart
-#docker php
     caddy:
-        image: elswork/arm-caddy
+        image: abiosoft/caddy
         ports:
             -   80:2015
             -   9000:9000
@@ -16,10 +13,10 @@ services:
     php:
         image: php:fpm
         volumes:
-        - /home/isidoris-simplon/rendu:/var/www/html
+        - /var/www/html:/var/www/html
 
     mariadb: 
-        image: hareemca123/arm-mysql
+        image: mariadb
         environment:
             MYSQL_ROOT_PASSWORD: wqaxszcde123
             MYSQL_DATABASE: db

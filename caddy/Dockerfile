@@ -1,7 +1,7 @@
-FROM armv7:armhf-ubuntu
+FROM golang:1.8.3-alpine
 LABEL maintainer "sorlinV<valentin.sorlin@hotmail.com>"
 
-LABEL caddy_version="0.0.1" architecture="arm"
+LABEL caddy_version="0.10.4" architecture="amd64"
 
 RUN apk add --no-cache git build-base
 
@@ -14,11 +14,11 @@ RUN go get -v github.com/abiosoft/caddyplug/caddyplug \
 RUN /usr/bin/caddyplug install-caddy
 
 EXPOSE 80 443 2015
-VOLUME .caddy
+VOLUME /root/.caddy
 WORKDIR /srv
 
 COPY Caddyfile /etc/Caddyfile
-COPY /home/isidoris-simplon/rendu /srv
+COPY index.html /srv/index.html
 
 ENTRYPOINT ["/usr/bin/caddy"]
 CMD ["--conf", "/etc/Caddyfile", "--log", "stdout"]
