@@ -3,27 +3,26 @@ services:
     caddy:
         image: abiosoft/caddy
         ports:
-            -   80:2015
-            -   9000:9000
-            -   5001:5001
+            -   80:80
             -   443:443
         volumes:
             - ./caddy/Caddyfile:/etc/Caddyfile
             - /var/www/html:/srv
-    php:
-        image: php:fpm
+
+    phpfpm:
+        image: php:7-fpm
         volumes:
         - /var/www/html:/var/www/html
-
-    mariadb: 
-        image: mariadb
-        environment:
-            MYSQL_ROOT_PASSWORD: wqaxszcde123
-            MYSQL_DATABASE: db
-            MYSQL_USER: mariadb
-            MYSQL_PASSWORD: wqaxszcde123
-        ports: 
-            - 3306:3306
+        - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
+#    mariadb: 
+#        image: mariadb
+#        environment:
+#            MYSQL_ROOT_PASSWORD: wqaxszcde123
+#            MYSQL_DATABASE: db
+#            MYSQL_USER: mariadb
+#            MYSQL_PASSWORD: wqaxszcde123
+#        ports: 
+#            - 3306:3306
 
     # mail:
     #     image: tvial/docker-mailserver:latest

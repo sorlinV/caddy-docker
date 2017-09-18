@@ -1,2 +1,5 @@
-localhost
+sorlinv.fr
 browse
+fastcgi / phpfpm:9001 php {
+	root /var/www/html
+}
